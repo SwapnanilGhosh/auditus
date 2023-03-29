@@ -58,6 +58,7 @@ function sendMessage() {
   });
 }
 
+
 function scrollToBottom() {
   chatBoxBody.scrollTop = chatBoxBody.scrollHeight;
 }
