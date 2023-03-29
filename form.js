@@ -46,14 +46,8 @@ function sendMessage() {
     submitBtn.innerHTML = "Audit";
     submitBtn.disabled = false;
     chatBoxBody.classList.add("information");
-    console.log(data);
-    var a = data.message.split(/([0-9])\./g);
-    a.pop();
-    var toAppend = "";
-    a.forEach(function (t, i){
-        toAppend += t + "<br>";
-    })
-    chatBoxBody.innerHTML = `<h3>Audited Report</h3><br><p>${toAppend}</p>`;
+    
+    chatBoxBody.innerHTML = `<h3>Audited Report</h3><br><p>${data.message}</p>`;
     scrollToBottom();
   });
 }
