@@ -33,6 +33,7 @@ function sendMessage() {
     previousResponse.remove();
   }
 
+  
   fetch('https://api.0x0.ai/message', {
     method: 'POST',
     headers: {
@@ -46,10 +47,18 @@ function sendMessage() {
     submitBtn.innerHTML = "Audit";
     submitBtn.disabled = false;
     chatBoxBody.classList.add("information");
+    // Split data message to remove numbers followed by "." and further followed by a space using regular expressions:
+    const filteredMessage = data.message.split(/\d+\.\s/gm).join('');
+    let reportLines = filteredMessage.split("\n");
+    if (!reportLines[reportLines.length - 1].endsWith(".")) {
+      reportLines.pop();
+    }
+    chatBoxBody.innerHTML = "<h3>Audited Report</h3><br><p>" + reportLines.join("<br>") + "</p>";
     
-    chatBoxBody.innerHTML = `<h3>Audited Report</h3><br><p>${data.message}</p>`;
     scrollToBottom();
   });
+  
+
 }
 
 
